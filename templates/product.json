@@ -9,6 +9,69 @@
  */
 {
   "sections": {
+    "1765629290cde6bcfe": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_bde3f4e_6cVTEW": {
+          "type": "ai_gen_block_bde3f4e",
+          "settings": {
+            "show_description": true,
+            "description_title": "Description",
+            "description_metafield": "",
+            "show_additional_info": true,
+            "additional_info_title": "Additional information",
+            "info_metafield": "custom.more_information",
+            "section_padding": 20,
+            "item_padding": 20,
+            "title_size": 18,
+            "title_weight": "600",
+            "content_size": 15,
+            "icon_size": 20,
+            "border_thickness": 1,
+            "title_color": "#000000",
+            "content_color": "#333333",
+            "icon_color": "#000000",
+            "hover_color": "#008fb1",
+            "border_color": "#e0e0e0",
+            "star_color": "#ffc107"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_bde3f4e_6cVTEW"
+      ],
+      "settings": {}
+    },
+    "blocks_V3mYRd": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_957bc2f_xNARLj": {
+          "type": "ai_gen_block_957bc2f",
+          "settings": {
+            "home_text": "Home",
+            "show_home_icon": false,
+            "separator": "/",
+            "font_size": 12,
+            "item_spacing": 8,
+            "underline_on_hover": true,
+            "background_color": "#ffffff",
+            "link_color": "#ff980c",
+            "link_hover_color": "#008fb1",
+            "current_page_color": "#000000",
+            "separator_color": "#999999",
+            "padding_top": 12,
+            "padding_bottom": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_957bc2f_xNARLj"
+      ],
+      "name": "Breadcrumb",
+      "settings": {}
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -16,15 +79,15 @@
           "type": "title",
           "settings": {}
         },
+        "des_trMXwU": {
+          "type": "des",
+          "settings": {}
+        },
         "share": {
           "type": "share",
           "settings": {
             "share_label": "Share"
           }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
         },
         "price": {
           "type": "price",
@@ -51,8 +114,8 @@
       },
       "block_order": [
         "title",
+        "des_trMXwU",
         "share",
-        "description",
         "price",
         "variant_picker",
         "quantity_selector",
@@ -70,7 +133,7 @@
         "image_zoom": "hover",
         "hide_variants": true,
         "enable_video_looping": false,
-        "margin_top": 24,
+        "margin_top": 12,
         "margin_bottom": 24
       }
     },
@@ -94,7 +157,9 @@
     }
   },
   "order": [
+    "blocks_V3mYRd",
     "main",
+    "1765629290cde6bcfe",
     "related-products"
   ]
 }

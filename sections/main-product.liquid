@@ -674,6 +674,14 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {%- when 'des' -%}
+                {% assign short_desc = product.metafields.custom.short_description %}
+
+                {% if short_desc != blank %}
+                  <div class="product-short-description">
+                    {{ short_desc }}
+                  </div>
+                {% endif %}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -931,6 +939,11 @@
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
+      "limit": 1
+    },
+    {
+      "type": "des",
+      "name": "Short description",
       "limit": 1
     },
     {

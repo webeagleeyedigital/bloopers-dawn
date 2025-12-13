@@ -1,0 +1,502 @@
+{% doc %}
+  @prompt
+    Create a section with accordian, description, additional information, reviews in which data will be fetched throught metafields and meta objects
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-accordion-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-accordion-item-{{ ai_gen_id }} {
+    border-bottom: {{ block.settings.border_thickness }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-accordion-item-{{ ai_gen_id }}:first-child {
+    border-top: {{ block.settings.border_thickness }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-accordion-header-{{ ai_gen_id }} {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: {{ block.settings.item_padding }}px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+
+  .ai-accordion-header-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.hover_color }};
+  }
+
+  .ai-accordion-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: {{ block.settings.title_weight }};
+    color: {{ block.settings.title_color }};
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  .ai-accordion-header-{{ ai_gen_id }}:hover .ai-accordion-title-{{ ai_gen_id }} {
+    color: {{ block.settings.hover_color }};
+  }
+
+  .ai-accordion-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-accordion-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-accordion-item-{{ ai_gen_id }}.active .ai-accordion-icon-{{ ai_gen_id }} {
+    transform: rotate(180deg);
+  }
+
+  .ai-accordion-content-{{ ai_gen_id }} {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .ai-accordion-content-inner-{{ ai_gen_id }} {
+    padding: 0 0 {{ block.settings.item_padding }}px 0;
+    font-size: {{ block.settings.content_size }}px;
+    line-height: 1.6;
+    color: {{ block.settings.content_color }};
+  }
+
+  .ai-accordion-content-inner-{{ ai_gen_id }} p {
+    margin: 0 0 12px 0;
+  }
+
+  .ai-accordion-content-inner-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-accordion-empty-{{ ai_gen_id }} {
+    font-style: italic;
+    color: #999;
+    font-size: 14px;
+  }
+
+  .ai-accordion-info-list-{{ ai_gen_id }} {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ai-accordion-info-item-{{ ai_gen_id }} {
+    display: flex;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-accordion-info-item-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-accordion-info-label-{{ ai_gen_id }} {
+    font-weight: 600;
+    min-width: 150px;
+    flex-shrink: 0;
+  }
+
+  .ai-accordion-info-value-{{ ai_gen_id }} {
+    flex-grow: 1;
+  }
+
+  .ai-accordion-review-{{ ai_gen_id }} {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-accordion-review-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-accordion-review-header-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .ai-accordion-review-author-{{ ai_gen_id }} {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .ai-accordion-review-rating-{{ ai_gen_id }} {
+    display: flex;
+    gap: 2px;
+    color: {{ block.settings.star_color }};
+  }
+
+  .ai-accordion-review-text-{{ ai_gen_id }} {
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-accordion-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.9);
+    }
+
+    .ai-accordion-content-inner-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.content_size }}px * 0.9);
+    }
+
+    .ai-accordion-info-item-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ai-accordion-info-label-{{ ai_gen_id }} {
+      min-width: auto;
+    }
+  }
+{% endstyle %}
+
+<product-accordion-{{ ai_gen_id }} class="ai-accordion-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.show_description %}
+    <div class="ai-accordion-item-{{ ai_gen_id }}" data-accordion-item>
+      <button class="ai-accordion-header-{{ ai_gen_id }}" aria-expanded="false">
+        <h3 class="ai-accordion-title-{{ ai_gen_id }}">{{ block.settings.description_title }}</h3>
+        <span class="ai-accordion-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </button>
+      <div class="ai-accordion-content-{{ ai_gen_id }}">
+        <div class="ai-accordion-content-inner-{{ ai_gen_id }}">
+          {% if block.settings.description_metafield != blank %}
+            {% assign desc_parts = block.settings.description_metafield | split: '.' %}
+            {% assign desc_ns    = desc_parts[0] %}
+            {% assign desc_key   = desc_parts[1] %}
+            {% assign desc_value = product.metafields[desc_ns][desc_key] %}
+
+            {% if desc_value != blank %}
+              <div class="ai-product-tabs__description-{{ ai_gen_id }}">
+                {{ desc_value }}
+              </div>
+            {% elsif product.description != blank %}
+              <div class="ai-product-tabs__description-{{ ai_gen_id }}">
+                {{ product.description }}
+              </div>
+            {% else %}
+              <div class="ai-product-tabs__empty-{{ ai_gen_id }}">
+                Add a product description or configure the metafield for this tab
+              </div>
+            {% endif %}
+          {% elsif product.description != blank %}
+            <div class="ai-product-tabs__description-{{ ai_gen_id }}">
+              {{ product.description }}
+            </div>
+          {% else %}
+            <div class="ai-product-tabs__empty-{{ ai_gen_id }}">
+              Add a product description or configure the metafield for this tab
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if block.settings.show_additional_info %}
+    <div class="ai-accordion-item-{{ ai_gen_id }}" data-accordion-item>
+      <button class="ai-accordion-header-{{ ai_gen_id }}" aria-expanded="false">
+        <h3 class="ai-accordion-title-{{ ai_gen_id }}">{{ block.settings.additional_info_title }}</h3>
+        <span class="ai-accordion-icon-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </button>
+      <div class="ai-accordion-content-{{ ai_gen_id }}">
+        <div class="ai-accordion-content-inner-{{ ai_gen_id }}">
+        {% if block.settings.info_metafield != blank %}
+          {% assign add_parts = block.settings.info_metafield | split: '.' %}
+          {% assign add_ns    = add_parts[0] %}
+          {% assign add_key   = add_parts[1] %}
+          {% assign add_value = product.metafields[add_ns][add_key] %}
+
+          {% if add_value != blank %}
+            <div class="ai-product-tabs__description-{{ ai_gen_id }}">
+              {{ add_value }}
+            </div>
+          {% else %}
+            <div class="ai-product-tabs__empty-{{ ai_gen_id }}">
+              Configure the Additional Information metafield for this product
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="ai-product-tabs__empty-{{ ai_gen_id }}">
+            Configure the Additional Information metafield for this product
+          </div>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</product-accordion-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductAccordion{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.items = this.querySelectorAll('[data-accordion-item]');
+        this.setupAccordion();
+      }
+
+      setupAccordion() {
+        this.items.forEach((item) => {
+          const header = item.querySelector('.ai-accordion-header-{{ ai_gen_id }}');
+          const content = item.querySelector('.ai-accordion-content-{{ ai_gen_id }}');
+          const contentInner = item.querySelector('.ai-accordion-content-inner-{{ ai_gen_id }}');
+
+          header.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            this.items.forEach((otherItem) => {
+              if (otherItem !== item) {
+                otherItem.classList.remove('active');
+                const otherContent = otherItem.querySelector('.ai-accordion-content-{{ ai_gen_id }}');
+                const otherHeader = otherItem.querySelector('.ai-accordion-header-{{ ai_gen_id }}');
+                otherContent.style.maxHeight = null;
+                otherHeader.setAttribute('aria-expanded', 'false');
+              }
+            });
+
+            if (isActive) {
+              item.classList.remove('active');
+              content.style.maxHeight = null;
+              header.setAttribute('aria-expanded', 'false');
+            } else {
+              item.classList.add('active');
+              content.style.maxHeight = contentInner.scrollHeight + 'px';
+              header.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+
+        if (this.items.length > 0) {
+          const firstItem = this.items[0];
+          const firstHeader = firstItem.querySelector('.ai-accordion-header-{{ ai_gen_id }}');
+          const firstContent = firstItem.querySelector('.ai-accordion-content-{{ ai_gen_id }}');
+          const firstContentInner = firstItem.querySelector('.ai-accordion-content-inner-{{ ai_gen_id }}');
+          
+          firstItem.classList.add('active');
+          firstContent.style.maxHeight = firstContentInner.scrollHeight + 'px';
+          firstHeader.setAttribute('aria-expanded', 'true');
+        }
+      }
+    }
+
+    customElements.define('product-accordion-{{ ai_gen_id }}', ProductAccordion{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product accordion",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Description section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show description",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "description_title",
+      "label": "Description title",
+      "default": "Description"
+    },
+    {
+      "type": "text",
+      "id": "description_metafield",
+      "label": "Description metafield",
+      "info": "Format: namespace.key (e.g., custom.description). Leave empty to use product description."
+    },
+    {
+      "type": "header",
+      "content": "Additional information section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_additional_info",
+      "label": "Show additional information",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "additional_info_title",
+      "label": "Additional information title",
+      "default": "Additional information"
+    },
+    {
+      "type": "text",
+      "id": "info_metafield",
+      "label": "Additional information metafield",
+      "info": "Format: namespace.key (e.g., custom.additional_information)."
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Item padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "content_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Content size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "hover_color",
+      "label": "Hover",
+      "default": "#008fb1"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star rating",
+      "default": "#ffc107"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product accordion"
+    }
+  ]
+}
+{% endschema %}
