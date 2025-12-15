@@ -1216,6 +1216,7 @@ shopify-accelerated-checkout-cart {
 .share-button {
   display: block;
   position: relative;
+  margin: 0 !important
 }
 
 .share-button details {

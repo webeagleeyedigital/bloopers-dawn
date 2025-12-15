@@ -9,40 +9,6 @@
  */
 {
   "sections": {
-    "1765629290cde6bcfe": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_bde3f4e_6cVTEW": {
-          "type": "ai_gen_block_bde3f4e",
-          "settings": {
-            "show_description": true,
-            "description_title": "Description",
-            "description_metafield": "",
-            "show_additional_info": true,
-            "additional_info_title": "Additional information",
-            "info_metafield": "custom.more_information",
-            "section_padding": 20,
-            "item_padding": 20,
-            "title_size": 18,
-            "title_weight": "600",
-            "content_size": 15,
-            "icon_size": 20,
-            "border_thickness": 1,
-            "title_color": "#000000",
-            "content_color": "#333333",
-            "icon_color": "#000000",
-            "hover_color": "#008fb1",
-            "border_color": "#e0e0e0",
-            "star_color": "#ffc107"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_bde3f4e_6cVTEW"
-      ],
-      "settings": {}
-    },
     "blocks_V3mYRd": {
       "type": "_blocks",
       "blocks": {
@@ -75,6 +41,19 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "share_3akb7e": {
+          "type": "share",
+          "settings": {
+            "share_label": ""
+          }
+        },
+        "buy_buttons_JLT7Az": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -82,12 +61,6 @@
         "des_trMXwU": {
           "type": "des",
           "settings": {}
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         },
         "price": {
           "type": "price",
@@ -97,29 +70,67 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "square"
           }
         },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
         },
-        "buy_buttons": {
-          "type": "buy_buttons",
+        "offers_P3Vxti": {
+          "type": "offers",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "heading": "Active Offers"
+          }
+        },
+        "icon_with_text_Gk33TT": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "heading_1": "Heading",
+            "icon_2": "return",
+            "heading_2": "Heading",
+            "icon_3": "truck",
+            "heading_3": "Heading"
+          }
+        },
+        "product_accordion_EpbMFf": {
+          "type": "product_accordion",
+          "settings": {
+            "show_description": true,
+            "description_title": "Description",
+            "description_metafield": "",
+            "show_additional_info": true,
+            "additional_info_title": "Additional information",
+            "info_metafield": "custom.more_information",
+            "section_padding": 20,
+            "item_padding": 20,
+            "title_size": 18,
+            "title_weight": "600",
+            "content_size": 15,
+            "icon_size": 20,
+            "border_thickness": 1,
+            "title_color": "#000000",
+            "content_color": "#333333",
+            "icon_color": "#000000",
+            "hover_color": "#008fb1",
+            "border_color": "#e0e0e0",
+            "star_color": "#ffc107"
           }
         }
       },
       "block_order": [
+        "share_3akb7e",
+        "buy_buttons_JLT7Az",
         "title",
         "des_trMXwU",
-        "share",
         "price",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "offers_P3Vxti",
+        "icon_with_text_Gk33TT",
+        "product_accordion_EpbMFf"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -136,6 +147,10 @@
         "margin_top": 12,
         "margin_bottom": 24
       }
+    },
+    "1765629290cde6bcfe": {
+      "type": "_blocks",
+      "settings": {}
     },
     "related-products": {
       "type": "related-products",

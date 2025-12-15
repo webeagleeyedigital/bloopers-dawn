@@ -7,11 +7,11 @@ product-info {
 }
 
 .product__media-wrapper {
-  Width: 100%;
+  Width: 48%;
 }
 
 .product__info-wrapper {
-  width: 100%;
+  width: 52%;
 }
 
 /* Dynamic checkout */
@@ -999,6 +999,12 @@ a.product__text {
 }
 
 @media screen and (max-width: 767.98px) {
+  .product__media-wrapper {
+    width: 100%
+  }
+  .product__info-wrapper {
+    width: 100%;
+  }
   .product__media-list {
     margin-left: -2.5rem;
     margin-bottom: 3rem;
@@ -1413,7 +1419,7 @@ a.product__text {
   }
 }
 @media screen and (min-width: 768px) {
-  .product__column-sticky {
+  .product-media-with-cart {
     display: block;
     position: sticky;
     top: 3rem;

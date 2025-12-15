@@ -76,7 +76,20 @@
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
+        <div class="product-media-with-cart">
         {% render 'product-media-gallery', variant_images: variant_images %}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'buy_buttons' -%}
+                {%- render 'buy-buttons',
+                  block: block,
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                  show_pickup_availability: true
+                -%}{%- endcase -%}
+          {%- endfor -%}
+        </div>
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -476,16 +489,7 @@
                 %}
 
               {%- when 'variant_picker' -%}
-                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-              {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
-              {%- when 'rating' -%}
+                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}{%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
                     {% liquid
@@ -682,7 +686,39 @@
                     {{ short_desc }}
                   </div>
                 {% endif %}
-            {%- endcase -%}
+              {%- when 'product_accordion' -%}
+                {%- render 'product-accordion',
+                  block: block,
+                  product: product
+                -%}
+
+              {%- when 'offers' -%}
+                <div class="offer-section" {{ block.shopify_attributes }}>
+                  {% for coll in product.collections %}
+                    {% if coll.metafields.custom.discount_code != blank %}
+                      <div class="active-offers">
+                        <span>Active Offers</span>
+                        <div class="offers-grid">
+                          {%- assign offers = coll.metafields.custom.discount_code
+                            | replace: '\r', ''
+                            | split: '
+' -%}
+                          {% for offer in offers %}
+                            {% assign parts = offer | split: '|' %}
+                            <div class="offer-card">
+                              <p class="offer-title">{{ parts[1] }}</p>
+                              <p class="offer-sub">{{ parts[2] }}</p>
+                              <p class="offer-code">
+                                Code: <span class="offer-tag">{{ parts[0] }}</span>
+                              </p>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>            
+              {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
             {{ 'products.product.view_full_details' | t }}
@@ -945,6 +981,19 @@
       "type": "des",
       "name": "Short description",
       "limit": 1
+    },
+    {
+      "type": "offers",
+      "name": "Active offers",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Active Offers"
+        }
+      ]
     },
     {
       "type": "share",
@@ -2099,7 +2148,166 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
+    },
+    {
+      "type": "product_accordion",
+      "name": "Product accordion",
+      "limit": 1,
+      "settings": [
+        { "type": "header", "content": "Description section" },
+        {
+          "type": "checkbox",
+          "id": "show_description",
+          "label": "Show description",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "description_title",
+          "label": "Description title",
+          "default": "Description"
+        },
+        {
+          "type": "text",
+          "id": "description_metafield",
+          "label": "Description metafield",
+          "info": "Format: namespace.key (e.g., custom.description)"
+        },
+
+        { "type": "header", "content": "Additional information section" },
+        {
+          "type": "checkbox",
+          "id": "show_additional_info",
+          "label": "Show additional information",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "additional_info_title",
+          "label": "Additional information title",
+          "default": "Additional information"
+        },
+        {
+          "type": "text",
+          "id": "info_metafield",
+          "label": "Additional information metafield",
+          "info": "Format: namespace.key (e.g., custom.additional_information)"
+        },
+
+        { "type": "header", "content": "Style" },
+        {
+          "type": "range",
+          "id": "section_padding",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "Section padding",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "item_padding",
+          "min": 8,
+          "max": 40,
+          "step": 4,
+          "unit": "px",
+          "label": "Item padding",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "title_size",
+          "min": 12,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "label": "Title size",
+          "default": 18
+        },
+        {
+          "type": "select",
+          "id": "title_weight",
+          "label": "Title weight",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "600"
+        },
+        {
+          "type": "range",
+          "id": "content_size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "label": "Content size",
+          "default": 15
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "min": 16,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "label": "Icon size",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "border_thickness",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "unit": "px",
+          "label": "Border thickness",
+          "default": 1
+        },
+
+        { "type": "header", "content": "Colors" },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "content_color",
+          "label": "Content",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "hover_color",
+          "label": "Hover",
+          "default": "#008fb1"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border",
+          "default": "#e0e0e0"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star rating",
+          "default": "#ffc107"
+        }
+      ]
     }
+
   ],
   "settings": [
     {
