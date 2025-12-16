@@ -1,5 +1,6 @@
 variant-selects {
   display: block;
+  margin: 20px 0 0;
 }
 
 .product--no-media .product-form__input--pill,
@@ -89,11 +90,14 @@ variant-selects {
 }
 
 .product-form__input--pill input[type='radio'] + label:hover {
-  border-color: rgb(var(--color-foreground));
+  background-color: #0074FA;
+  border-color: #0074FA;
+  color: rgb(var(--color-background));
 }
 
 .product-form__input--pill input[type='radio']:checked + label {
-  background-color: rgb(var(--color-foreground));
+  background-color: #0074FA;
+  border-color: #0074FA;
   color: rgb(var(--color-background));
 }
 
@@ -147,6 +151,11 @@ variant-selects {
 @media screen and (min-width: 768px) {
   .product-form__input--swatch .swatch-input__input + .swatch-input__label {
     --swatch-input--size: 2.8rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  variant-selects {
+    margin: 24px 0 0;
   }
 }
 /* End custom styles for Swatch display type */

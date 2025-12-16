@@ -1,10 +1,12 @@
 .price {
-  font-size: 1.6rem;
-  letter-spacing: 0.1rem;
-  line-height: calc(1 + 0.5 / var(--font-body-scale));
-  color: rgb(var(--color-foreground));
+  margin: 12px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  padding-bottom: 16px;
+  border-bottom: 0.6px solid #ff980c;
 }
-
 .price > * {
   display: inline-block;
   vertical-align: top;
@@ -18,35 +20,16 @@
   text-align: right;
 }
 
-.price .price-item {
-  display: inline-block;
-  margin: 0 1rem 0 0;
-}
-
 .price__regular .price-item--regular {
   margin-right: 0;
+	color: #000;
+	font-size: 18px;
+	line-height: 1.4;
+  font-weight: 700;
 }
 
 .price:not(.price--show-badge) .price-item--last:last-of-type {
   margin: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .price {
-    margin-bottom: 0;
-  }
-}
-
-.price--large {
-  font-size: 1.6rem;
-  line-height: calc(1 + 0.5 / var(--font-body-scale));
-  letter-spacing: 0.13rem;
-}
-
-@media screen and (min-width: 768px) {
-  .price--large {
-    font-size: 1.8rem;
-  }
 }
 
 .price--sold-out .price__availability,
@@ -74,9 +57,11 @@
 }
 
 .price--on-sale .price__sale {
-  display: initial;
-  flex-direction: row;
+  display: flex;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
 }
 
 .price--center {
@@ -86,10 +71,17 @@
 
 .price--on-sale .price-item--regular {
   text-decoration: line-through;
-  color: rgba(var(--color-foreground), 0.75);
-  font-size: 1.3rem;
+	color: #9f9f9f;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.846;
 }
-
+.price--on-sale .price-item--sale {
+	color: #000;
+	font-size: 18px;
+	line-height: 1.4;
+  font-weight: 700;
+}
 .unit-price {
   display: block;
   font-size: 1.1rem;
@@ -97,4 +89,26 @@
   line-height: calc(1 + 0.2 / var(--font-body-scale));
   margin-top: 0.2rem;
   color: rgba(var(--color-foreground), 0.7);
+}
+.price__container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	align-content: flex-start;
+	gap: 12px;
+	row-gap: 0;
+	flex-shrink: 0;
+	font-weight: 700;  
+}
+@media screen and (min-width: 992px) {
+  .price {
+    margin: 24px 0 0;
+    padding-bottom: 19px;
+  }
+  .price__regular .price-item--regular {
+    font-size: 20px;
+  }
+  .price--on-sale .price-item--sale {
+    font-size: 20px;
+  }
 }

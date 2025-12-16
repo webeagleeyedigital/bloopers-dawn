@@ -69,30 +69,35 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "square"
+            "picker_type": "button"
           }
         },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
         },
-        "offers_P3Vxti": {
-          "type": "offers",
-          "settings": {
-            "heading": "Active Offers"
-          }
-        },
         "icon_with_text_Gk33TT": {
           "type": "icon-with-text",
           "settings": {
             "layout": "horizontal",
             "icon_1": "heart",
-            "heading_1": "Heading",
+            "image_1": "shopify://shop_images/Vector_1.svg",
+            "heading_1": "100% Genuine Product",
             "icon_2": "return",
-            "heading_2": "Heading",
+            "image_2": "shopify://shop_images/Vector_2.svg",
+            "heading_2": "100% Secure Payment",
             "icon_3": "truck",
-            "heading_3": "Heading"
+            "image_3": "shopify://shop_images/Group_125.svg",
+            "heading_3": "Cash on Delivery",
+            "icon_4": "truck",
+            "image_4": "shopify://shop_images/Vector_3.svg",
+            "heading_4": "Easy returns & Refund"
+          }
+        },
+        "custom_liquid_UEUezq": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p class=\"text-product-details\">Product Details</p>\n<style>\n.text-product-details {\n    font-size: 16px;\n    font-weight: 500;\n    line-height: 1.625;\n   color: #000;\nmargin-top: 20px;\nmargin-bottom: 10px;\n}\n@media screen and (min-width: 992px) {\n.text-product-details {\n    font-size: 20px;\nmargin-top: 32px;\n}\n}\n</style>"
           }
         },
         "product_accordion_EpbMFf": {
@@ -104,18 +109,18 @@
             "show_additional_info": true,
             "additional_info_title": "Additional information",
             "info_metafield": "custom.more_information",
-            "section_padding": 20,
-            "item_padding": 20,
+            "section_padding": 0,
+            "item_padding": 12,
             "title_size": 18,
             "title_weight": "600",
-            "content_size": 15,
+            "content_size": 14,
             "icon_size": 20,
             "border_thickness": 1,
             "title_color": "#000000",
-            "content_color": "#333333",
+            "content_color": "#454545",
             "icon_color": "#000000",
-            "hover_color": "#008fb1",
-            "border_color": "#e0e0e0",
+            "hover_color": "#0074fa",
+            "border_color": "#e3e3e3",
             "star_color": "#ffc107"
           }
         }
@@ -128,8 +133,8 @@
         "price",
         "variant_picker",
         "quantity_selector",
-        "offers_P3Vxti",
         "icon_with_text_Gk33TT",
+        "custom_liquid_UEUezq",
         "product_accordion_EpbMFf"
       ],
       "settings": {
@@ -139,10 +144,10 @@
         "constrain_to_viewport": false,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
-        "mobile_thumbnails": "show",
+        "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "hover",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
         "margin_top": 12,
         "margin_bottom": 24
