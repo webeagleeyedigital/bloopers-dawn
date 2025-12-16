@@ -123,17 +123,20 @@
 }
 
 .card__content {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) max-content minmax(0, 1fr);
-  padding: 1rem;
+  padding: 0.9rem;
   width: 100%;
   flex-grow: 1;
+	border-left: 1px solid #f0f0f0;
+	border-right: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0;
 }
 
 .card__content--auto-margins {
   grid-template-rows: minmax(0, auto) max-content minmax(0, auto);
 }
-
+.card--card.card--media>.card__content .card__information {
+  padding: 0;
+} 
 .card__information {
   grid-row-start: 2;
   padding: 1.3rem 1rem;
@@ -303,6 +306,18 @@
 .card__heading {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.card__heading a {
+  margin-top: 0;
+  margin-bottom: 0;
+	color: #000;
+	font-size: 12px;
+	font-weight: 500;  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
 }
 
 .card__heading:last-child {
@@ -496,6 +511,8 @@
 
 .card-information > *:not(.visually-hidden:first-child) + *:not(.rating):not(.card__information-volume-pricing-note) {
   margin-top: 0.7rem;
+  padding: 0;
+  border: none;
 }
 
 .card-information .caption {
@@ -551,7 +568,24 @@
 }
 
 /* Card Shape Hover Rules */
-
+/* Card Price */
+.card-information .price--on-sale .price__sale {
+  gap: 4px;
+} 
+.card-information .price__regular .price-item--regular {
+  font-size: 10px;
+}
+.card-information .price--on-sale .price-item--regular {
+  font-size: 8px;
+  line-height: normal;
+}
+.card-information .price--on-sale .price-item--sale {
+  font-size: 10px;
+}
+.card-information .badge {
+  font-size: 8px;
+  padding: 0.2rem;
+} 
 @media (prefers-reduced-motion: no-preference) {
   .product-card-wrapper .shape--round {
     transition: clip-path var(--duration-long) ease;
@@ -592,4 +626,32 @@
   .grid__item:nth-child(8n) .product-card-wrapper:hover .shape--blob {
     clip-path: polygon(var(--shape--blob-5));
   }
+}
+@media(min-width:992px){
+  .card__content {
+    padding: 1.5rem
+  }
+  .card__heading a {
+    font-size: 18px;
+    width: 200px;
+  }  
+  .card-information .price--on-sale .price__sale {
+    gap: 6px;
+  } 
+  .card-information .price__regular .price-item--regular {
+    font-size: 16px;
+  }
+  .card-information .price--on-sale .price-item--regular {
+    font-size: 12px;
+  }
+  .card-information .price--on-sale .price-item--sale {
+    font-size: 16px;
+  }
+  .card-information > *:not(.visually-hidden:first-child) + *:not(.rating):not(.card__information-volume-pricing-note) {
+    margin-top: 1.5rem;
+  }
+  .card-information .badge {
+    font-size: 1.2rem;
+    padding: .5rem;
+  } 
 }

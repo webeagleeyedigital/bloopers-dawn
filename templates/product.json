@@ -153,10 +153,6 @@
         "margin_bottom": 24
       }
     },
-    "1765629290cde6bcfe": {
-      "type": "_blocks",
-      "settings": {}
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -166,11 +162,11 @@
         "columns_desktop": 4,
         "columns_mobile": "2",
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
-        "show_rating": false,
+        "show_rating": true,
         "padding_top": 36,
         "padding_bottom": 28
       }
@@ -179,7 +175,6 @@
   "order": [
     "blocks_V3mYRd",
     "main",
-    "1765629290cde6bcfe",
     "related-products"
   ]
 }

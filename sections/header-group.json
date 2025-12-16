@@ -54,10 +54,40 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "blocks_9KKAnq": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_957bc2f_Pt4GUd": {
+          "type": "ai_gen_block_957bc2f",
+          "settings": {
+            "home_text": "Home",
+            "show_home_icon": false,
+            "separator": "/",
+            "font_size": 14,
+            "item_spacing": 8,
+            "underline_on_hover": true,
+            "background_color": "#ffffff",
+            "link_color": "#121212",
+            "link_hover_color": "#008fb1",
+            "current_page_color": "#666666",
+            "separator_color": "#999999",
+            "padding_top": 12,
+            "padding_bottom": 12
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_957bc2f_Pt4GUd"
+      ],
+      "name": "Breadcrumb",
+      "settings": {}
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "blocks_9KKAnq"
   ]
 }
