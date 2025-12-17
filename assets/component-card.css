@@ -298,7 +298,13 @@
   object-position: center center;
   width: 100%;
 }
-
+.card__media .media.media--hover-effect>img+img {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.6s cubic-bezier(.4, 0, .2, 1); 
+}
 .card__inner:not(.ratio) > .card__content {
   height: 100%;
 }
@@ -412,8 +418,7 @@
 
   .card-wrapper:hover .media.media--hover-effect > img + img {
     opacity: 1;
-    transition: transform var(--duration-long) ease;
-    transform: scale(1.03);
+    transform: translateX(0);
   }
 
   .underline-links-hover:hover a {
@@ -586,6 +591,93 @@
   font-size: 8px;
   padding: 0.2rem;
 } 
+/* Rating */
+.card__content .btn-article1 {
+	width: 73px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	flex-shrink: 0;
+	letter-spacing: 0px;
+	background-color: #000000;
+	padding: 4px 3px;  
+  height: max-content;
+  border: none !important
+}
+.card__content .btn-article-icon {
+  width: 12px; height: 12px;
+	display: flex
+}
+.card__content .btn-article-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Add to Cart */
+.card__product-add-button {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 10px;
+}
+.card__product-add-button .add-to-cart-new {
+  background: #0000004D;
+  width: 100%;
+  border: 1.5px solid #FF980C;
+  backdrop-filter: blur(10px);
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none !important;
+  padding: 10px 0;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.card__product-add-button .card-cart svg{
+  width: 22px;
+  height: 24px;
+}
+.card__product-add-button .add-to-cart-new span{
+  line-height: 16px;
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+/* Product Card Wrapper Hover */
+.product-card-wrapper:hover .card__inner .card__content {
+  box-shadow: none;
+}
+.product-card-wrapper:hover .card {
+  box-shadow: 0px 4px 14px 0px #0000001F;
+}
+.product-card-wrapper:hover .card__content{
+  border: none;
+}
+.product-card-wrapper:hover .card__heading a{
+  color: #FF3668;
+  text-decoration: none
+}
+.product-card-wrapper:hover .card__product-add-button {
+  display: block;
+}
+.product-card-wrapper .add-to-cart-new:hover{
+  background: #000000 !important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .product-card-wrapper .shape--round {
     transition: clip-path var(--duration-long) ease;
@@ -655,3 +747,4 @@
     padding: .5rem;
   } 
 }
+
