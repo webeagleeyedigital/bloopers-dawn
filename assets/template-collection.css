@@ -1,35 +1,8 @@
-@media screen and (max-width: 767.98px) {
-  .collection .grid__item:only-child {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-@media screen and (max-width: 991.98px) {
-  .collection .slider.slider--tablet {
-    margin-bottom: 1.5rem;
-  }
-}
-
 .collection .loading-overlay {
   position: absolute;
   z-index: 1;
   width: 1.8rem;
 }
-
-@media screen and (max-width: 767.98px) {
-  .collection .loading-overlay {
-    top: 0;
-    right: 0;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .collection .loading-overlay {
-    left: 0;
-  }
-}
-
 .collection .loading-overlay {
   top: 0;
   right: 0;
@@ -40,42 +13,68 @@
   padding: 0 1.5rem;
   opacity: 0.7;
 }
-
+.collection.loading .loading-overlay {
+  display: block;
+}
+.collection--empty .title-wrapper {
+  margin-top: 10rem;
+  margin-bottom: 15rem;
+}
+.collection__description > * {
+  margin: 0;
+}
+.collection__title.title-wrapper {
+  margin-bottom: 1.8rem;
+  text-align: center;  
+}
+.collection__title .title:not(:only-child) {
+  margin-bottom: 1rem;
+}
+.collection__title .title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+.collection__view-all a:not(.link) {
+  margin-top: 1rem;
+}
+@media screen and (max-width: 767.98px) {
+  .collection .loading-overlay {
+    top: 0;
+    right: 0;
+  }
+  .collection .grid__item:only-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
 @media screen and (min-width: 768px) {
+  .collection__title.title-wrapper {
+    margin-bottom: 2.4rem;
+  }
+  .collection .loading-overlay {
+    left: 0;
+  }
   .collection .loading-overlay {
     padding-left: 5rem;
     padding-right: 5rem;
   }
 }
-
-.collection.loading .loading-overlay {
-  display: block;
-}
-
-.collection--empty .title-wrapper {
-  margin-top: 10rem;
-  margin-bottom: 15rem;
-}
-
 @media screen and (max-width: 991.98px) {
   .collection .slider--tablet.product-grid {
     scroll-padding-left: 1.5rem;
   }
+  .collection .slider.slider--tablet {
+    margin-bottom: 1.5rem;
+  }
 }
-
-.collection__description > * {
-  margin: 0;
-}
-
-.collection__title.title-wrapper {
-  margin-bottom: 2.5rem;
-}
-
-.collection__title .title:not(:only-child) {
-  margin-bottom: 1rem;
-}
-
 @media screen and (min-width: 992px) {
+  .collection__title.title-wrapper {
+    margin-bottom: 3.2rem;
+  }  
+  .collection__title .title {
+    font-size: 24px;
+  }
   .collection__title--desktop-slider .title {
     margin-bottom: 2.5rem;
   }
@@ -92,8 +91,4 @@
     padding: 0 1.5rem;
     max-width: none;
   }
-}
-
-.collection__view-all a:not(.link) {
-  margin-top: 1rem;
 }
