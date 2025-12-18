@@ -2247,67 +2247,54 @@ input[type='checkbox'] {
 .header__icons {
   display: flex;
   grid-area: icons;
+  justify-content: flex-end;
+  align-items: center;
   justify-self: end;
-  padding-right: 0.8rem;
   width: 20%;
+  gap: 18px
 }
-@media screen and (min-width: 1200px) {
-  .header__icons {
-    width: 30%;
-  }  
+
+.header__icons .header__icon--cart,
+.header__icons .header__icon--account {
+    margin: 0;
+    display: flex;
+    width: max-content;
+    gap: 14px;
+    align-items: center;
+    justify-content: flex-end;
 }
+
 .header__icons .shopify-app-block {
   max-width: 4.4rem;
   max-height: 4.4rem;
   overflow: hidden;
 }
 
-.header__icon:not(.header__icon--summary),
-.header__icon span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header__icon {
-  color: rgb(var(--color-foreground));
-}
-
-.header__icon span {
-  height: 100%;
-}
-
-.header__icon .svg-wrapper {
-  width: 44px;
-  height: 44px;
-}
-
-.header__icon::after {
+.header__icons::after {
   content: none;
 }
 
-.header__icon:hover .icon,
 .modal__close-button:hover .icon {
   transform: scale(1.07);
 }
 
-.header__icon .icon {
-  height: 2rem;
-  width: 2rem;
+.header__icon--account .icon {
+  height: 1.8rem;
+  width: 1.8rem;
   fill: none;
   vertical-align: middle;
 }
 
-.header__icon,
-.header__icon--cart .icon {
-  height: 4.4rem;
-  width: 4.4rem;
+.header__icon--cart .svg-wrapper {
+  height: 3.5rem;
+  width: 3.5rem;
   padding: 0;
 }
 
-.header__icon--cart {
-  position: relative;
-  margin-right: -1.2rem;
+.header__icon--cart .icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  padding: 0;
 }
 
 .header__icon--menu[aria-expanded='true']::before {
@@ -2335,6 +2322,44 @@ details[open] .header__icon-close {
 
 account-icon {
   display: flex;
+}
+
+.header__icons .header__icon--cart span,
+.header__icons .header__icon--account span{
+  font-weight: 400;
+  font-size: 15px;
+  color: #000000;
+  text-decoration: none !important;
+}
+
+.header__icons .header__icon--cart span:hover,
+.header__icons .header__icon--account span:hover{
+  color: #0074FA;
+}
+@media screen and (min-width: 1200px) {
+  .header__icons {
+    width: 30%;
+    gap: 24px
+  } 
+
+  .header__icon--account .icon {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .header__icon--cart .svg-wrapper {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .header__icon--cart .icon {
+    height: 4rem;
+    width: 4rem;
+  }
+  .header__icons .header__icon--cart span,
+  .header__icons .header__icon--account span{
+    font-size: 16px;
+  }
 }
 
 /* Search */
@@ -2451,6 +2476,8 @@ details[open] .modal-overlay::after {
   opacity: 1;
   transform: scale(1);
   transition: transform 150ms ease, opacity 150ms ease;
+  width: 2rem;
+  height: 2rem;
 }
 
 details:not([open]) > .header__icon--menu .icon-close,

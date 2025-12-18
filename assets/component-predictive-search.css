@@ -24,6 +24,9 @@
 }
 
 @media screen and (max-width: 767.98px) {
+  .header predictive-search {
+    display: none;
+  }
   .predictive-search--header {
     right: 0;
     left: 0;
