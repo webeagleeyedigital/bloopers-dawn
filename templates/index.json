@@ -9,59 +9,61 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "17660411548c88148f": {
+      "type": "_blocks",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "ai_gen_block_73e9465_cgWWCN": {
+          "type": "ai_gen_block_73e9465",
           "settings": {
-            "heading": "Browse our latest product",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
+            "slider_height": 550,
+            "slider_height_mobile": 250,
+            "autoplay": false,
+            "autoplay_speed": 5,
+            "dot_size": 6,
+            "dot_spacing": 8,
+            "dots_padding": 10,
+            "dot_color": "#d9d9d9",
+            "dot_active_color": "#0074fa",
+            "dot_opacity": 100,
+            "dot_hover_opacity": 100,
+            "dot_active_scale": 110,
+            "slide_1_desktop_image": "shopify://shop_images/mahabharat_website_slider.webp",
+            "slide_1_mini_desktop_image": "shopify://shop_images/SLIDER_BANNER_1.jpg",
+            "slide_1_mobile_image": "shopify://shop_images/MOBILE_BANNER_3.webp",
+            "slide_1_link_type": "none",
+            "slide_1_link": "",
+            "slide_2_desktop_image": "shopify://shop_images/banner_1440x520_copy.webp",
+            "slide_2_mini_desktop_image": "shopify://shop_images/SLIDER_BANNER_2.jpg",
+            "slide_2_mobile_image": "shopify://shop_images/MOBILE_BANNER_copy.webp",
+            "slide_2_link_type": "none",
+            "slide_2_link": "",
+            "slide_3_link_type": "none",
+            "slide_3_link": "",
+            "slide_4_link_type": "none",
+            "slide_4_link": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "ai_gen_block_73e9465_cgWWCN"
       ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
+      "settings": {}
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
+        "products_to_show": 4,
+        "title": "New Arrival",
         "heading_size": "h2",
-        "description": "",
+        "description": "<p>Just dropped: Oversized tees that scream style and comfort.</p>",
         "show_description": false,
         "description_style": "body",
         "columns_desktop": 4,
         "enable_desktop_slider": false,
         "full_width": false,
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
         "image_ratio": "portrait",
@@ -72,13 +74,283 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 52,
+        "padding_bottom": 56
+      }
+    },
+    "collection_wide_card1_wWz6bt": {
+      "type": "collection-wide-card1",
+      "blocks": {
+        "card_eYwJjG": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Card heading",
+            "link_url": "shopify://collections/men",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 20,
+            "content_gap": 16,
+            "heading_size": 24,
+            "heading_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_ebDGrK": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Card heading",
+            "link_url": "",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 20,
+            "content_gap": 16,
+            "heading_size": 24,
+            "heading_color": "#000000",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_mJVHqF": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Card heading",
+            "link_url": "",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 20,
+            "content_gap": 16,
+            "heading_size": 24,
+            "heading_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_EEVhzm": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Card heading",
+            "link_url": "",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 20,
+            "content_gap": 16,
+            "heading_size": 24,
+            "heading_color": "#000000",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        }
+      },
+      "block_order": [
+        "card_eYwJjG",
+        "card_ebDGrK",
+        "card_mJVHqF",
+        "card_EEVhzm"
+      ],
+      "name": "Promo cards grid/slider",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "collection_wide_card_jc8jka": {
+      "type": "collection-wide-card",
+      "blocks": {
+        "card_9nxrMb": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Men’s Winter Collections",
+            "text": "20% OFF",
+            "link_text": "",
+            "link_url": "shopify://collections/men",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 15,
+            "content_gap": 12,
+            "heading_size": 20,
+            "heading_color": "#000000",
+            "text_size": 20,
+            "text_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_8wJd3m": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Men’s Winter Collections",
+            "text": "20% OFF",
+            "link_text": "",
+            "link_url": "shopify://collections/men",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 15,
+            "content_gap": 12,
+            "heading_size": 20,
+            "heading_color": "#000000",
+            "text_size": 20,
+            "text_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_jfwWdR": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Men’s Winter Collections",
+            "text": "20% OFF",
+            "link_text": "",
+            "link_url": "shopify://collections/men",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 15,
+            "content_gap": 12,
+            "heading_size": 20,
+            "heading_color": "#000000",
+            "text_size": 20,
+            "text_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_W6BeWY": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Men’s Winter Collections",
+            "text": "20% OFF",
+            "link_text": "",
+            "link_url": "shopify://collections/men",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 15,
+            "content_gap": 12,
+            "heading_size": 20,
+            "heading_color": "#000000",
+            "text_size": 20,
+            "text_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_QJqwE6": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Men’s Winter Collections",
+            "text": "20% OFF",
+            "link_text": "",
+            "link_url": "shopify://collections/men",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 15,
+            "content_gap": 12,
+            "heading_size": 20,
+            "heading_color": "#000000",
+            "text_size": 20,
+            "text_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_miW7EJ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/BANNER_5.jpg",
+            "heading": "Men’s Winter Collections",
+            "text": "20% OFF",
+            "link_text": "",
+            "link_url": "shopify://collections/men",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 15,
+            "content_gap": 12,
+            "heading_size": 20,
+            "heading_color": "#000000",
+            "text_size": 20,
+            "text_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        }
+      },
+      "block_order": [
+        "card_9nxrMb",
+        "card_8wJd3m",
+        "card_jfwWdR",
+        "card_W6BeWY",
+        "card_QJqwE6",
+        "card_miW7EJ"
+      ],
+      "name": "Content cards grid",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "17660411548c88148f",
+    "featured_collection",
+    "collection_wide_card1_wWz6bt",
+    "collection_wide_card_jc8jka"
   ]
 }

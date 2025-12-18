@@ -78,7 +78,7 @@
 
 .page-width {
   max-width: var(--page-width);
-  width: calc(100% - 4rem);
+  width: calc(100% - 4.8rem);
   margin: 0 auto;
 }
 
@@ -2330,6 +2330,7 @@ account-icon {
   font-size: 15px;
   color: #000000;
   text-decoration: none !important;
+  position:relative;
 }
 
 .header__icons .header__icon--cart span:hover,
