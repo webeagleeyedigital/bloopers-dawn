@@ -2110,6 +2110,10 @@ input[type='checkbox'] {
   .header--has-app {
     grid-template-columns: auto 1fr auto;
   }
+  .header .header-left,
+  .header__heading {
+    width: 100% !important;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -2371,6 +2375,17 @@ account-icon {
     font-size: 16px;
   }
 }
+@media screen and (max-width: 767.98px) {
+  .header__icon--cart span {
+    display: none
+  }
+  .header__icon--cart .svg-wrapper {
+    display: block
+  }
+  .header__icons {
+    width: 100%;
+  }
+}
 
 /* Search */
 menu-drawer + .header__search {
@@ -2488,6 +2503,7 @@ details[open] .modal-overlay::after {
   transition: transform 150ms ease, opacity 150ms ease;
   width: 2rem;
   height: 2rem;
+  top: -10px;
 }
 
 details:not([open]) > .header__icon--menu .icon-close,

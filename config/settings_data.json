@@ -11,9 +11,9 @@
   "current": {
     "logo": "shopify://shop_images/logo.png",
     "logo_width": 130,
-    "type_header_font": "montserrat_n4",
+    "type_header_font": "archivo_narrow_n4",
     "heading_scale": 100,
-    "type_body_font": "archivo_n4",
+    "type_body_font": "archivo_narrow_n4",
     "body_scale": 100,
     "page_width": 1240,
     "spacing_sections": 0,
@@ -107,15 +107,15 @@
     "sale_badge_color_scheme": "scheme-5",
     "sold_out_badge_color_scheme": "scheme-3",
     "brand_headline": "",
-    "brand_description": "<p></p>",
+    "brand_description": "",
     "brand_image_width": 100,
-    "social_facebook_link": "",
-    "social_instagram_link": "",
+    "social_facebook_link": "https://www.facebook.com/Bloopersstore/",
+    "social_instagram_link": "https://www.instagram.com/bloopersstore/?hl=en",
     "social_youtube_link": "",
     "social_tiktok_link": "",
     "social_twitter_link": "",
     "social_snapchat_link": "",
-    "social_pinterest_link": "",
+    "social_pinterest_link": "https://in.pinterest.com/bloopersstore/",
     "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
@@ -196,6 +196,17 @@
           "button_label": "#334fb4",
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
+        }
+      },
+      "scheme-560648d6-9029-4ae0-84ce-b84d8822762f": {
+        "settings": {
+          "background": "#191f26",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#008fb1",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#008fb1",
+          "shadow": "#008fb1"
         }
       }
     }

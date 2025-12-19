@@ -22,7 +22,7 @@
     margin: 0;
     padding: 0;
     gap: {{ block.settings.item_spacing }}px;
-    font-size: {{ block.settings.font_size }}px;
+    font-size: {{ block.settings.font_size }}px !important;
   }
 
   .ai-breadcrumb-item-{{ ai_gen_id }} {
@@ -49,6 +49,7 @@
 
   .ai-breadcrumb-current-{{ ai_gen_id }} {
     color: {{ block.settings.current_page_color }};
+    font-size: {{ block.settings.font_size }}px !important;  
   }
 
   .ai-breadcrumb-home-icon-{{ ai_gen_id }} {

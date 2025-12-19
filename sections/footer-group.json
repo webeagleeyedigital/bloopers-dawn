@@ -17,30 +17,30 @@
         "image_J8WrWN": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/7_dot_Logo_1.png",
-            "image_width": 100,
+            "image": "shopify://shop_images/2048_Logo_-02.png",
+            "image_width": 550,
             "alignment": ""
           }
         },
         "link_list_yUqMyQ": {
           "type": "link_list",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "heading": "<strong>Company</strong>",
+            "menu": "company-footer"
           }
         },
         "link_list_ajn4Yt": {
           "type": "link_list",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "heading": "<strong>Policies</strong>",
+            "menu": "need-help-footer"
           }
         },
-        "link_list_L9CKU6": {
-          "type": "link_list",
+        "newsletter_zFdb7E": {
+          "type": "newsletter",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "newsletter_enable": true,
+            "newsletter_heading": "Join Our Newslatter"
           }
         }
       },
@@ -48,21 +48,19 @@
         "image_J8WrWN",
         "link_list_yUqMyQ",
         "link_list_ajn4Yt",
-        "link_list_L9CKU6"
+        "newsletter_zFdb7E"
       ],
       "settings": {
-        "color_scheme": "scheme-3",
-        "newsletter_enable": false,
-        "newsletter_heading": "",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
+        "color_scheme": "scheme-560648d6-9029-4ae0-84ce-b84d8822762f",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "show_policy": false,
         "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 40,
+        "padding_bottom": 20
       }
     }
   },

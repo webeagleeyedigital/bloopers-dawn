@@ -192,7 +192,9 @@
 .card__information-volume-pricing-note--button + .global-settings-popup.quantity-popover__info .quantity__rules {
   text-align: left;
 }
-
+.card-wrapper .product__tax {
+  display: none;
+}
 @media screen and (min-width: 992px) {
   .grid--6-col-desktop .card__content quick-add-bulk .quantity {
     width: auto;
@@ -217,6 +219,9 @@
 }
 
 @media screen and (max-width: 767.98px) {
+  .card__badge {
+    display: none;
+  }
   .grid--2-col-tablet-down .card__content quick-add-bulk .quantity__button {
     width: calc(3.5rem / var(--font-body-scale));
   }
@@ -323,7 +328,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 150px;
+  width: 120px;
 }
 
 .card__heading:last-child {
