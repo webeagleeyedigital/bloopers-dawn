@@ -1,6 +1,5 @@
 variant-selects {
   display: block;
-  margin: 20px 0 0;
 }
 
 .product--no-media .product-form__input--pill,
@@ -74,6 +73,7 @@ variant-selects {
   transition: border var(--duration-short) ease;
   cursor: pointer;
   position: relative;
+  text-transform: uppercase;
 }
 
 .product-form__input--pill input[type='radio'] + label:before {
@@ -153,9 +153,5 @@ variant-selects {
     --swatch-input--size: 2.8rem;
   }
 }
-@media screen and (min-width: 992px) {
-  variant-selects {
-    margin: 24px 0 0;
-  }
-}
+
 /* End custom styles for Swatch display type */

@@ -1523,3 +1523,28 @@ if (!customElements.get('vertical-slider-component')) {
   customElements.define('vertical-slider-component', VerticalSliderComponent);
 }
 
+
+document.addEventListener('click', (event) => {
+  const trigger = event.target.closest('.size-guide__trigger');
+  const closeBtn = event.target.closest('.size-guide__close');
+
+  // Open
+  if (trigger) {
+    const modalId = trigger.getAttribute('aria-controls');
+    const modal = document.getElementById(modalId);
+    if (modal) modal.hidden = false;
+  }
+
+  // Close (button)
+  if (closeBtn) {
+    const modal = closeBtn.closest('.size-guide__modal');
+    if (modal) modal.hidden = true;
+  }
+
+  // Close when clicking backdrop
+  const modalBackdrop = event.target.classList.contains('size-guide__modal');
+  if (modalBackdrop) {
+    event.target.hidden = true;
+  }
+});
+

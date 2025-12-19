@@ -1,5 +1,5 @@
 .price {
-  margin: 12px 0 0;
+  margin: 12px 0;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -102,7 +102,7 @@
 }
 @media screen and (min-width: 992px) {
   .price {
-    margin: 24px 0 0;
+    margin: 24px 0;
     padding-bottom: 19px;
   }
   .price__regular .price-item--regular {

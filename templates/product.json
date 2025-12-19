@@ -41,6 +41,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "rating_ecGKab": {
+          "type": "rating",
+          "settings": {}
+        },
         "share_3akb7e": {
           "type": "share",
           "settings": {
@@ -69,7 +73,9 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "label": "Size guide",
+            "fallback_image": "shopify://shop_images/websitesizechart_f2955b01-ad6e-4f84-87fb-187c0ff403b0.jpg"
           }
         },
         "quantity_selector": {
@@ -126,6 +132,7 @@
         }
       },
       "block_order": [
+        "rating_ecGKab",
         "share_3akb7e",
         "buy_buttons_JLT7Az",
         "title",

@@ -8,87 +8,129 @@
   Usage:
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
-{%- unless product.has_only_default_variant -%}
-  <variant-selects
-    id="variant-selects-{{ section.id }}"
-    data-section="{{ section.id }}"
-    {{ block.shopify_attributes }}
-  >
-    {%- for option in product.options_with_values -%}
-      {%- liquid
-        assign swatch_count = option.values | map: 'swatch' | compact | size
-        assign picker_type = block.settings.picker_type
+  <div class="product__options-with-size-guide" {{ block.shopify_attributes }}> 
+    {%- unless product.has_only_default_variant -%}
+      <variant-selects
+        id="variant-selects-{{ section.id }}"
+        data-section="{{ section.id }}"
+        {{ block.shopify_attributes }}
+      >
+        {%- for option in product.options_with_values -%}
+          {%- liquid
+            assign swatch_count = option.values | map: 'swatch' | compact | size
+            assign picker_type = block.settings.picker_type
 
-        if swatch_count > 0 and block.settings.swatch_shape != 'none'
-          if block.settings.picker_type == 'dropdown'
-            assign picker_type = 'swatch_dropdown'
-          else
-            assign picker_type = 'swatch'
-          endif
-        endif
-      -%}
-      {%- if picker_type == 'swatch' -%}
-        <fieldset class="js product-form__input product-form__input--swatch">
-          <legend class="form__label">
-            {{ option.name }}:
-            <span data-selected-value>
-              {{- option.selected_value -}}
-            </span>
-          </legend>
-          {% render 'product-variant-options',
-            product: product,
-            option: option,
-            block: block,
-            picker_type: picker_type
-          %}
-        </fieldset>
-      {%- elsif picker_type == 'button' -%}
-        <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">{{ option.name }}</legend>
-          {% render 'product-variant-options',
-            product: product,
-            option: option,
-            block: block,
-            picker_type: picker_type
-          %}
-        </fieldset>
-      {%- else -%}
-        <div class="product-form__input product-form__input--dropdown">
-          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-            {{ option.name }}
-          </label>
-          <div class="select">
-            {%- if picker_type == 'swatch_dropdown' -%}
-              <span
-                data-selected-value
-                class="dropdown-swatch"
-              >
-                {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
-              </span>
-            {%- endif -%}
-            <select
-              id="Option-{{ section.id }}-{{ forloop.index0 }}"
-              class="select__select"
-              name="options[{{ option.name | escape }}]"
-              form="{{ product_form_id }}"
-            >
+            if swatch_count > 0 and block.settings.swatch_shape != 'none'
+              if block.settings.picker_type == 'dropdown'
+                assign picker_type = 'swatch_dropdown'
+              else
+                assign picker_type = 'swatch'
+              endif
+            endif
+          -%}
+          {%- if picker_type == 'swatch' -%}
+            <fieldset class="js product-form__input product-form__input--swatch">
+              <legend class="form__label">
+                {{ option.name }}:
+                <span data-selected-value>
+                  {{- option.selected_value -}}
+                </span>
+              </legend>
               {% render 'product-variant-options',
                 product: product,
                 option: option,
                 block: block,
                 picker_type: picker_type
               %}
-            </select>
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
+            </fieldset>
+          {%- elsif picker_type == 'button' -%}
+            <fieldset class="js product-form__input product-form__input--pill">
+              <legend class="form__label">{{ option.name }}</legend>
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                block: block,
+                picker_type: picker_type
+              %}
+            </fieldset>
+          {%- else -%}
+            <div class="product-form__input product-form__input--dropdown">
+              <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                {{ option.name }}
+              </label>
+              <div class="select">
+                {%- if picker_type == 'swatch_dropdown' -%}
+                  <span
+                    data-selected-value
+                    class="dropdown-swatch"
+                  >
+                    {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
+                  </span>
+                {%- endif -%}
+                <select
+                  id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                  class="select__select"
+                  name="options[{{ option.name | escape }}]"
+                  form="{{ product_form_id }}"
+                >
+                  {% render 'product-variant-options',
+                    product: product,
+                    option: option,
+                    block: block,
+                    picker_type: picker_type
+                  %}
+                </select>
+                <span class="svg-wrapper">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        <script type="application/json" data-selected-variant>
+          {{ product.selected_or_first_available_variant | json }}
+        </script>
+      </variant-selects>
+    {%- endunless -%}
+    {%- assign size_image = product.metafields.custom.size_chart_image -%}
+    {%- if size_image == blank -%}
+      {%- assign size_image = block.settings.fallback_image -%}
+    {%- endif -%}
+
+    {%- if size_image -%}
+      <div class="product__block product__block--size-guide">
+        <button
+          type="button"
+          class="size-guide__trigger"
+          aria-controls="SizeGuide-{{ section.id }}"
+          aria-haspopup="dialog"
+        >
+          {{ block.settings.label }}
+          <span class="size-guide__icon">{{ 'size-arrow.svg' | inline_asset_content }}</span>
+        </button>
+
+        <div
+          id="SizeGuide-{{ section.id }}"
+          class="size-guide__modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="{{ block.settings.label | escape }}"
+          hidden
+        >
+          <div class="size-guide__modal-inner">
+            <button
+              type="button"
+              class="size-guide__close"
+              aria-label="{{ 'accessibility.close' | t }}"
+            >
+              &times;
+            </button>
+            <div class="size-guide__image-wrapper">
+              {{ size_image | image_url: width: 1000 | image_tag }}
+            </div>
           </div>
         </div>
-      {%- endif -%}
-    {%- endfor -%}
-
-    <script type="application/json" data-selected-variant>
-      {{ product.selected_or_first_available_variant | json }}
-    </script>
-  </variant-selects>
-{%- endunless -%}
+      </div>
+    {%- endif -%}
+  </div>
