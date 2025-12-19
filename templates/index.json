@@ -48,12 +48,14 @@
       "block_order": [
         "ai_gen_block_73e9465_cgWWCN"
       ],
+      "name": "Hero Section",
       "settings": {}
     },
     "featured_collection": {
       "type": "featured-collection",
+      "name": "Mahabhart Collection",
       "settings": {
-        "collection": "all",
+        "collection": "mahabharat-collections",
         "products_to_show": 4,
         "title": "New Arrival",
         "heading_size": "h2",
@@ -84,7 +86,7 @@
         "banner_mcXM8z": {
           "type": "banner",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/CATEGORY_BANNER_copy.webp",
             "heading": "",
             "text": "",
             "link_label": "",
@@ -106,11 +108,11 @@
         "banner_zhghgn": {
           "type": "banner",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/CATEGORY_BANNER_2.webp",
             "heading": "",
             "text": "",
             "link_label": "",
-            "link_url": "shopify://collections/men",
+            "link_url": "",
             "border_radius": 0,
             "content_padding": 8,
             "content_vertical_align": "center",
@@ -130,7 +132,7 @@
         "banner_mcXM8z",
         "banner_zhghgn"
       ],
-      "name": "Two banners",
+      "name": "Oversized Collection",
       "settings": {
         "padding_top": 48,
         "padding_bottom": 0
@@ -142,9 +144,9 @@
         "card_6kiWcV": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
-            "heading": "Card heading",
-            "link_url": "shopify://collections/men",
+            "image": "shopify://shop_images/Hoodie_1.png",
+            "heading": "Time Fues",
+            "link_url": "shopify://products/time-fues-winter-wear-graphic-printed-trendy-hoodie-for-men",
             "card_background": "#ffffff",
             "card_border_radius": 0,
             "card_padding": 20,
@@ -160,12 +162,12 @@
             "button_border_radius": 0
           }
         },
-        "card_EDw9TH": {
+        "card_WH4mYP": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
-            "heading": "Card heading",
-            "link_url": "shopify://collections/men",
+            "image": "shopify://shop_images/Black_hoodie_1.png",
+            "heading": "Chill Freak ",
+            "link_url": "shopify://products/netures-black-hoodie-copy",
             "card_background": "#ffffff",
             "card_border_radius": 0,
             "card_padding": 20,
@@ -181,12 +183,33 @@
             "button_border_radius": 0
           }
         },
-        "card_AYK7bF": {
+        "card_Dgg4mc": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
-            "heading": "Card heading",
-            "link_url": "shopify://collections/men",
+            "image": "shopify://shop_images/White_hoodie.png",
+            "heading": "Bunny White",
+            "link_url": "shopify://products/bloopers-hindi-red-hoodie-copy",
+            "card_background": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 20,
+            "content_gap": 16,
+            "heading_size": 24,
+            "heading_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding_vertical": 10,
+            "button_padding_horizontal": 20,
+            "button_background": "#008fb1",
+            "button_hover_background": "#006d8a",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 0
+          }
+        },
+        "card_4xwXEq": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Red_hoodie.png",
+            "heading": "B Star",
+            "link_url": "shopify://products/active-soul-black-hoodie-copy",
             "card_background": "#ffffff",
             "card_border_radius": 0,
             "card_padding": 20,
@@ -205,16 +228,17 @@
       },
       "block_order": [
         "card_6kiWcV",
-        "card_EDw9TH",
-        "card_AYK7bF"
+        "card_WH4mYP",
+        "card_Dgg4mc",
+        "card_4xwXEq"
       ],
-      "name": "Promo cards grid/slider",
+      "name": "Winter Collection",
       "settings": {
         "padding_top": 48,
         "padding_bottom": 0,
-        "title": "Featured collection",
+        "title": "Winter Collections",
         "heading_size": "h1",
-        "description": "",
+        "description": "<p>Steal It, Share It — Unisex Winter Hoodies for Eve</p>",
         "show_description": false,
         "description_style": "body"
       }
@@ -225,11 +249,11 @@
         "card_9nxrMb": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/Black_hoodie.png",
             "heading": "Men’s Winter Collections",
             "text": "20% OFF",
             "link_text": "",
-            "link_url": "shopify://collections/men",
+            "link_url": "",
             "card_background": "#ffffff",
             "card_border_radius": 0,
             "card_padding": 15,
@@ -250,7 +274,7 @@
         "card_8wJd3m": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/pink_crop_oversized_t_shirt.png",
             "heading": "Men’s Winter Collections",
             "text": "20% OFF",
             "link_text": "",
@@ -275,7 +299,7 @@
         "card_jfwWdR": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/black_oversized_t_shirt.png",
             "heading": "Men’s Winter Collections",
             "text": "20% OFF",
             "link_text": "",
@@ -300,7 +324,7 @@
         "card_W6BeWY": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/red_tshirt.png",
             "heading": "Men’s Winter Collections",
             "text": "20% OFF",
             "link_text": "",
@@ -325,7 +349,7 @@
         "card_QJqwE6": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/oversized_orange_t_shirt.png",
             "heading": "Men’s Winter Collections",
             "text": "20% OFF",
             "link_text": "",
@@ -350,7 +374,7 @@
         "card_miW7EJ": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/BANNER_5.jpg",
+            "image": "shopify://shop_images/oversized_t_shirt_for_girls.png",
             "heading": "Men’s Winter Collections",
             "text": "20% OFF",
             "link_text": "",
@@ -385,11 +409,79 @@
       "settings": {
         "padding_top": 48,
         "padding_bottom": 0,
-        "title": "Featured collection",
+        "title": "Bloopers Exclusive",
         "heading_size": "h2",
-        "description": "<p>fdfdg</p>",
+        "description": "<p>Only at Blooper’s Store: Rare, bold, and trend-approved</p>",
         "show_description": false,
         "description_style": "body"
+      }
+    },
+    "custom_liquid_aPPKEB": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"page-width\"><img src=\"https://cdn.shopify.com/s/files/1/0378/5929/5364/files/offer_Banner_2720x760_copy.webp?v=1765185191\" style=\"width: 100%\">\n</div>",
+        "color_scheme": "",
+        "padding_top": 48,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_RyQBgf": {
+      "type": "featured-collection",
+      "name": "Crop Tops",
+      "settings": {
+        "collection": "oversized-crop-top",
+        "products_to_show": 8,
+        "title": "Crop Tops",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_6DLqBB": {
+      "type": "featured-collection",
+      "name": "Best Seller",
+      "settings": {
+        "collection": "basic-collection",
+        "products_to_show": 8,
+        "title": "Best Seller",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 0
       }
     },
     "blocks_diELcq": {
@@ -399,11 +491,11 @@
           "type": "faq",
           "settings": {
             "heading": "Frequently Asked Questions",
-            "heading_size": 32,
-            "heading_color": "#2c2c2c",
+            "heading_size": 24,
+            "heading_color": "#000000",
             "paragraph": "Have any queries? We’ve got all the answers covered.",
-            "paragraph_size": 32,
-            "paragraph_color": "#2c2c2c",
+            "paragraph_size": 16,
+            "paragraph_color": "#767474",
             "container_width": 1000,
             "tab_bg_color": "#ffffff",
             "tab_text_color": "#2c2c2c",
@@ -484,6 +576,9 @@
     "collection_wide_card2_CLh9HC",
     "collection_wide_card1_w3qGKF",
     "collection_wide_card_jc8jka",
+    "custom_liquid_aPPKEB",
+    "featured_collection_RyQBgf",
+    "featured_collection_6DLqBB",
     "blocks_diELcq"
   ]
 }
