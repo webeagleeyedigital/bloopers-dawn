@@ -74,8 +74,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "label": "Size guide",
-            "fallback_image": "shopify://shop_images/websitesizechart_f2955b01-ad6e-4f84-87fb-187c0ff403b0.jpg"
+            "label": "Size guide"
           }
         },
         "quantity_selector": {

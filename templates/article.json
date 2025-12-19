@@ -1,1 +1,75 @@
-{"sections":{"main":{"type":"main-article","blocks":{"featured_image":{"type":"featured_image","settings":{"image_height":"adapt"}},"title":{"type":"title","settings":{"blog_show_date":true,"blog_show_author":false}},"share":{"type":"share","settings":{"share_label":"Share"}},"content":{"type":"content","settings":{}}},"block_order":["featured_image","title","share","content"],"settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blocks_6VVhqh": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_957bc2f_7kHB3n": {
+          "type": "ai_gen_block_957bc2f",
+          "settings": {
+            "home_text": "Home",
+            "show_home_icon": false,
+            "separator": "/",
+            "font_size": 12,
+            "item_spacing": 8,
+            "underline_on_hover": true,
+            "background_color": "#ffffff",
+            "link_color": "#ff980c",
+            "link_hover_color": "#008fb1",
+            "current_page_color": "#000000",
+            "separator_color": "#999999",
+            "padding_top": 12,
+            "padding_bottom": 12
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_957bc2f_7kHB3n"
+      ],
+      "custom_css": [],
+      "name": "Breadcrumb",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": false
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "featured_image",
+        "title",
+        "content"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "blocks_6VVhqh",
+    "main"
+  ]
+}
