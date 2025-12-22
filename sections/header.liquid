@@ -165,10 +165,7 @@
       -%}
     <div class="header-left">
       {%- if section.settings.logo_position != 'middle-center' -%}
-        {%- if request.page_type == 'index' -%}
-          <h1 class="header__heading">
-        {%- endif -%}
-        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+        <a href="{{ routes.root_url }}" class="header__heading-link">
           {%- if settings.logo != blank -%}
             <div class="header__heading-logo-wrapper">
               {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -192,9 +189,6 @@
             <span class="h2">{{ shop.name }}</span>
           {%- endif -%}
         </a>
-        {%- if request.page_type == 'index' -%}
-          </h1>
-        {%- endif -%}
       {%- endif -%}
 
       {%- liquid
@@ -206,7 +200,18 @@
           endif
         endif
       %}
-
+      <div class="header-mega-mennu">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'custom_liquid' -%}
+              {{ block.settings.custom_liquid }}
+            {% when 'ai_mega_menu' %}
+              {% render 'mega-menu-slider', section: section, block: block class: small-hide%}
+          {%- endcase -%}
+        {%- endfor -%}
+    </div>
       {%- if section.settings.logo_position == 'middle-center' -%}
         {%- if request.page_type == 'index' -%}
           <h1 class="header__heading">
@@ -294,13 +299,6 @@
           </span>
         </a>
       {%- endif -%}
-
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when '@app' -%}
-            {% render block %}
-        {%- endcase -%}
-      {%- endfor -%}
 
       <a href="{{ routes.cart_url }}" class="header__icon--cart link focus-inset" id="cart-icon-bubble">
         {% if cart == empty %}
@@ -547,6 +545,15 @@
       "label": "t:sections.header.settings.menu.label"
     },
     {
+      "type": "range",
+      "id": "mega_products_limit",
+      "label": "Mega menu products to show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
       "type": "select",
       "id": "menu_type_desktop",
       "options": [
@@ -679,7 +686,499 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "custom_liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+          "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+        }
+      ]
+    },
+    {
+      "type": "ai_mega_menu",
+      "name": "AI Mega menu",
+      "limit": 3,
+      "settings": [
+        /* copy ALL settings from your schema's "settings" array */
+        {
+          "type": "header",
+          "content": "Menu trigger"
+        },
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Menu title",
+          "default": "Shop"
+        },
+    {
+      "type": "range",
+      "id": "menu_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "menu_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "menu_text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "menu_hover_bg_color",
+      "label": "Hover background color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "menu_hover_text_color",
+      "label": "Hover text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Dropdown"
+    },
+    {
+      "type": "range",
+      "id": "dropdown_max_width",
+      "min": 800,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "dropdown_padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "dropdown_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Menu columns"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Number of columns",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "column_title_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Column title size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "column_title_color",
+      "label": "Column title color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "link_font_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Link font size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "text",
+      "id": "column_1_title",
+      "label": "Title",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "text",
+      "id": "column_1_link_1_text",
+      "label": "Link 1 text",
+      "default": "T-Shirts"
+    },
+    {
+      "type": "url",
+      "id": "column_1_link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_1_link_2_text",
+      "label": "Link 2 text",
+      "default": "Hoodies"
+    },
+    {
+      "type": "url",
+      "id": "column_1_link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_1_link_3_text",
+      "label": "Link 3 text",
+      "default": "Jackets"
+    },
+    {
+      "type": "url",
+      "id": "column_1_link_3_url",
+      "label": "Link 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_1_link_4_text",
+      "label": "Link 4 text"
+    },
+    {
+      "type": "url",
+      "id": "column_1_link_4_url",
+      "label": "Link 4 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_1_link_5_text",
+      "label": "Link 5 text"
+    },
+    {
+      "type": "url",
+      "id": "column_1_link_5_url",
+      "label": "Link 5 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_1_link_6_text",
+      "label": "Link 6 text"
+    },
+    {
+      "type": "url",
+      "id": "column_1_link_6_url",
+      "label": "Link 6 URL"
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "text",
+      "id": "column_2_title",
+      "label": "Title",
+      "default": "Collections"
+    },
+    {
+      "type": "text",
+      "id": "column_2_link_1_text",
+      "label": "Link 1 text",
+      "default": "Men"
+    },
+    {
+      "type": "url",
+      "id": "column_2_link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_2_link_2_text",
+      "label": "Link 2 text",
+      "default": "Women"
+    },
+    {
+      "type": "url",
+      "id": "column_2_link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_2_link_3_text",
+      "label": "Link 3 text",
+      "default": "Kids"
+    },
+    {
+      "type": "url",
+      "id": "column_2_link_3_url",
+      "label": "Link 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_2_link_4_text",
+      "label": "Link 4 text"
+    },
+    {
+      "type": "url",
+      "id": "column_2_link_4_url",
+      "label": "Link 4 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_2_link_5_text",
+      "label": "Link 5 text"
+    },
+    {
+      "type": "url",
+      "id": "column_2_link_5_url",
+      "label": "Link 5 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_2_link_6_text",
+      "label": "Link 6 text"
+    },
+    {
+      "type": "url",
+      "id": "column_2_link_6_url",
+      "label": "Link 6 URL"
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "text",
+      "id": "column_3_title",
+      "label": "Title",
+      "default": "Accessories"
+    },
+    {
+      "type": "text",
+      "id": "column_3_link_1_text",
+      "label": "Link 1 text",
+      "default": "Bags"
+    },
+    {
+      "type": "url",
+      "id": "column_3_link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_3_link_2_text",
+      "label": "Link 2 text",
+      "default": "Hats"
+    },
+    {
+      "type": "url",
+      "id": "column_3_link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_3_link_3_text",
+      "label": "Link 3 text",
+      "default": "Belts"
+    },
+    {
+      "type": "url",
+      "id": "column_3_link_3_url",
+      "label": "Link 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_3_link_4_text",
+      "label": "Link 4 text"
+    },
+    {
+      "type": "url",
+      "id": "column_3_link_4_url",
+      "label": "Link 4 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_3_link_5_text",
+      "label": "Link 5 text"
+    },
+    {
+      "type": "url",
+      "id": "column_3_link_5_url",
+      "label": "Link 5 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_3_link_6_text",
+      "label": "Link 6 text"
+    },
+    {
+      "type": "url",
+      "id": "column_3_link_6_url",
+      "label": "Link 6 URL"
+    },
+    {
+      "type": "header",
+      "content": "Column 4"
+    },
+    {
+      "type": "text",
+      "id": "column_4_title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "column_4_link_1_text",
+      "label": "Link 1 text"
+    },
+    {
+      "type": "url",
+      "id": "column_4_link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_4_link_2_text",
+      "label": "Link 2 text"
+    },
+    {
+      "type": "url",
+      "id": "column_4_link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_4_link_3_text",
+      "label": "Link 3 text"
+    },
+    {
+      "type": "url",
+      "id": "column_4_link_3_url",
+      "label": "Link 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_4_link_4_text",
+      "label": "Link 4 text"
+    },
+    {
+      "type": "url",
+      "id": "column_4_link_4_url",
+      "label": "Link 4 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_4_link_5_text",
+      "label": "Link 5 text"
+    },
+    {
+      "type": "url",
+      "id": "column_4_link_5_url",
+      "label": "Link 5 URL"
+    },
+    {
+      "type": "text",
+      "id": "column_4_link_6_text",
+      "label": "Link 6 text"
+    },
+    {
+      "type": "url",
+      "id": "column_4_link_6_url",
+      "label": "Link 6 URL"
+    },
+    {
+      "type": "header",
+      "content": "Product slider"
+    },
+    {
+      "type": "text",
+      "id": "products_section_title",
+      "label": "Section title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "range",
+      "id": "products_title_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size",
+      "default": 18
+    },
+    {
+      "type": "product_list",
+      "id": "featured_products",
+      "label": "Products",
+      "limit": 8
+    },
+    {
+      "type": "color",
+      "id": "product_text_color",
+      "label": "Product text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "product_image_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay speed",
+      "default": 4
     }
+      ]
+    }
+
   ]
 }
 {% endschema %}

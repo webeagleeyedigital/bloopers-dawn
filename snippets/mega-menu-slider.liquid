@@ -1,0 +1,399 @@
+{% doc %}
+  @prompt
+    Create an mega menu section on hover main menu and show the product slider in right side, please create this in block
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-mega-menu-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+    line-height: 1;
+  }
+
+  .ai-mega-menu-trigger-{{ ai_gen_id }} {
+    display: inline-block;
+    background-color: {{ block.settings.menu_bg_color }};
+    color: {{ block.settings.menu_text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.menu_font_size }}px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1;
+  }
+
+  .ai-mega-menu-trigger-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.menu_hover_bg_color }};
+    color: {{ block.settings.menu_hover_text_color }};
+  }
+
+  .ai-mega-menu-dropdown-{{ ai_gen_id }} {
+    position: absolute;
+    top: 200%;
+    left: 0;
+    width: max-content;
+    max-width: {{ block.settings.dropdown_max_width }}px;
+    background-color: {{ block.settings.dropdown_bg_color }};
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  .ai-mega-menu-{{ ai_gen_id }}:hover .ai-mega-menu-dropdown-{{ ai_gen_id }} {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ai-mega-menu-content-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+  }
+
+  .ai-mega-menu-links-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns }}, 1fr);
+  }
+
+  .ai-mega-menu-column-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+  }
+
+  .ai-mega-menu-column-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.column_title_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.column_title_color }};
+    margin: 0 0 8px 0;
+  }
+
+  .ai-mega-menu-link-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.link_font_size }}px;
+    transition: color 0.2s ease;
+  }
+
+  .ai-mega-menu-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  .ai-mega-menu-products-{{ ai_gen_id }} {
+    border-left: 1px solid {{ block.settings.divider_color }};
+    padding: 32px;
+  }
+
+  .ai-mega-menu-products-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.products_title_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.column_title_color }};
+    margin: 0 0 16px 0;
+  }
+
+  .ai-mega-menu-slider-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-mega-menu-slider-track-{{ ai_gen_id }} {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .ai-mega-menu-product-card-{{ ai_gen_id }} {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ai-mega-menu-product-image-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.product_image_radius }}px;
+  }
+
+  .ai-mega-menu-product-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-mega-menu-product-card-{{ ai_gen_id }}:hover .ai-mega-menu-product-image-{{ ai_gen_id }} img {
+    transform: scale(1.05);
+  }
+
+  .ai-mega-menu-product-info-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ai-mega-menu-product-title-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 500;
+    color: {{ block.settings.product_text_color }};
+    margin: 0;
+    text-decoration: none;
+  }
+
+  .ai-mega-menu-product-price-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.link_color }};
+    font-weight: 600;
+  }
+
+  .ai-mega-menu-slider-nav-{{ ai_gen_id }} {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    justify-content: center;
+  }
+
+  .ai-mega-menu-slider-dot-{{ ai_gen_id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: {{ block.settings.divider_color }};
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-mega-menu-slider-dot-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.link_color }};
+  }
+
+  .ai-mega-menu-empty-products-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-mega-menu-content-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-mega-menu-products-{{ ai_gen_id }} {
+      border-left: none;
+      border-top: 1px solid {{ block.settings.divider_color }};
+      padding-left: 0;
+      padding-top: 20px;
+    }
+
+    .ai-mega-menu-links-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-mega-menu-dropdown-{{ ai_gen_id }} {
+      position: fixed;
+      left: 0;
+      right: 0;
+      max-width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .ai-mega-menu-links-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<mega-menu-{{ ai_gen_id }} class="ai-mega-menu-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-mega-menu-trigger-{{ ai_gen_id }}">
+    {{ block.settings.menu_title }}
+  </div>
+
+  <div class="ai-mega-menu-dropdown-{{ ai_gen_id }}">
+    <div class="ai-mega-menu-content-{{ ai_gen_id }}">
+      <div class="ai-mega-menu-links-{{ ai_gen_id }}">
+        {% for i in (1..4) %}
+          {% liquid
+            assign column_title_key = 'column_' | append: i | append: '_title'
+            assign column_title = block.settings[column_title_key]
+          %}
+          
+          {% if column_title != blank %}
+            <div class="ai-mega-menu-column-{{ ai_gen_id }}">
+              <h3 class="ai-mega-menu-column-title-{{ ai_gen_id }}">{{ column_title }}</h3>
+              
+              {% for j in (1..6) %}
+                {% liquid
+                  assign link_text_key = 'column_' | append: i | append: '_link_' | append: j | append: '_text'
+                  assign link_url_key = 'column_' | append: i | append: '_link_' | append: j | append: '_url'
+                  assign link_text = block.settings[link_text_key]
+                  assign link_url = block.settings[link_url_key]
+                %}
+                
+                {% if link_text != blank %}
+                  <a href="{{ link_url }}" class="ai-mega-menu-link-{{ ai_gen_id }}">
+                    {{ link_text }}
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="ai-mega-menu-products-{{ ai_gen_id }}">
+        <h3 class="ai-mega-menu-products-title-{{ ai_gen_id }}">{{ block.settings.products_section_title }}</h3>
+        
+        {% if block.settings.featured_products != blank %}
+          <div class="ai-mega-menu-slider-{{ ai_gen_id }}">
+            <div class="ai-mega-menu-slider-track-{{ ai_gen_id }}">
+              {% for product in block.settings.featured_products %}
+                <div class="ai-mega-menu-product-card-{{ ai_gen_id }}">
+                  <a href="{{ product.url }}" class="ai-mega-menu-product-image-{{ ai_gen_id }}">
+                    {% if product.featured_image %}
+                      <img
+                        src="{{ product.featured_image | image_url: width: 400 }}"
+                        alt="{{ product.featured_image.alt | escape }}"
+                        width="400"
+                        height="400"
+                        loading="lazy"
+                      >
+                    {% else %}
+                      <div class="ai-mega-menu-product-image-placeholder-{{ ai_gen_id }}">
+                        {{ 'product-1' | placeholder_svg_tag }}
+                      </div>
+                    {% endif %}
+                  </a>
+                  <div class="ai-mega-menu-product-info-{{ ai_gen_id }}">
+                    <a href="{{ product.url }}" class="ai-mega-menu-product-title-{{ ai_gen_id }}">
+                      {{ product.title }}
+                    </a>
+                    <div class="ai-mega-menu-product-price-{{ ai_gen_id }}">
+                      {{ product.price | money }}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            
+            {% if block.settings.featured_products.size > 1 %}
+              <div class="ai-mega-menu-slider-nav-{{ ai_gen_id }}">
+                {% for product in block.settings.featured_products %}
+                  <button
+                    class="ai-mega-menu-slider-dot-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+                    data-index="{{ forloop.index0 }}"
+                    aria-label="Go to slide {{ forloop.index }}"
+                  ></button>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="ai-mega-menu-empty-products-{{ ai_gen_id }}">
+            Add featured products to display in the slider
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</mega-menu-{{ ai_gen_id }}>
+
+{% comment %} <script>
+  (function() {
+    class MegaMenu{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.autoplayInterval = null;
+      }
+
+      connectedCallback() {
+        this.slider = this.querySelector('.ai-mega-menu-slider-track-{{ ai_gen_id }}');
+        this.dots = this.querySelectorAll('.ai-mega-menu-slider-dot-{{ ai_gen_id }}');
+        this.slides = this.querySelectorAll('.ai-mega-menu-product-card-{{ ai_gen_id }}');
+        this.dropdown = this.querySelector('.ai-mega-menu-dropdown-{{ ai_gen_id }}');
+
+        if (this.slides.length > 1) {
+          this.setupSlider();
+          this.setupAutoplay();
+        }
+      }
+
+      setupSlider() {
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            this.goToSlide(index);
+            this.resetAutoplay();
+          });
+        });
+      }
+
+      setupAutoplay() {
+        this.addEventListener('mouseenter', () => {
+          this.startAutoplay();
+        });
+
+        this.addEventListener('mouseleave', () => {
+          this.stopAutoplay();
+        });
+      }
+
+      startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+          this.nextSlide();
+        }, {{ block.settings.autoplay_speed }} * 1000);
+      }
+
+      stopAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      resetAutoplay() {
+        this.stopAutoplay();
+        this.startAutoplay();
+      }
+
+      nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.updateSlider();
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.updateSlider();
+      }
+
+      updateSlider() {
+        if (this.slider) {
+          this.slider.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+        }
+
+        this.dots.forEach((dot, index) => {
+          if (index === this.currentSlide) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    customElements.define('mega-menu-{{ ai_gen_id }}', MegaMenu{{ ai_gen_id }});
+  })();
+</script> {% endcomment %}
+

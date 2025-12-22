@@ -25,49 +25,88 @@
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
+
+              {%- comment -%} BEGIN extended mega menu content {%- endcomment -%}
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
-                <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
-                  role="list"
-                >
-                  {%- for childlink in link.links -%}
-                    <li>
-                      <a
-                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                        href="{{ childlink.url }}"
-                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                        {% if childlink.current %}
-                          aria-current="page"
-                        {% endif %}
-                      >
-                        {{ childlink.title | escape }}
-                      </a>
-                      {%- if childlink.links != blank -%}
-                        <ul class="list-unstyled" role="list">
-                          {%- for grandchildlink in childlink.links -%}
-                            <li>
-                              <a
-                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                href="{{ grandchildlink.url }}"
-                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
-                                {% if grandchildlink.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
-                                {{ grandchildlink.title | escape }}
-                              </a>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      {%- endif -%}
-                    </li>
-                  {%- endfor -%}
-                </ul>
+                <div class="mega-menu__inner page-width">
+                  {%- comment -%} LEFT: original link list {%- endcomment -%}
+                  <ul
+                    class="mega-menu__list{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                    role="list"
+                  >
+                    {%- for childlink in link.links -%}
+                      <li>
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                        {%- if childlink.links != blank -%}
+                          <ul class="list-unstyled" role="list">
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+
+                  {%- comment -%} RIGHT: product slider from section.settings.mega_collection {%- endcomment -%}
+                  {% if section.settings.mega_collection %}
+                    {% assign mega_collection = section.settings.mega_collection %}
+                    {% assign mega_products = mega_collection.products | slice: 0, section.settings.mega_products_limit %}
+
+                    {% if mega_products.size > 0 %}
+                      <div class="mega-menu__products">
+                        <div class="mega-menu__products-title">
+                          {{ mega_collection.title | escape }}
+                        </div>
+                        <div class="mega-menu__products-slider">
+                          {% for product in mega_products %}
+                            <a href="{{ product.url }}" class="mega-menu__product-card">
+                              {% if product.featured_media %}
+                                {{ product.featured_media
+                                  | image_url: width: 260
+                                  | image_tag: alt: product.featured_media.alt | escape
+                                }}
+                              {% endif %}
+                              <div class="mega-menu__product-title">
+                                {{ product.title | escape }}
+                              </div>
+                              <div class="mega-menu__product-price">
+                                {% render 'price', product: product, show_compare_at_price: true %}
+                              </div>
+                            </a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </div>
               </div>
+              {%- comment -%} END extended mega menu content {%- endcomment -%}
+
             </details>
           </header-menu>
         {%- else -%}
